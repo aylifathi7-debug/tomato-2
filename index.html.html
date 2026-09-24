@@ -7,7 +7,11 @@
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com/"></script>
-    
+    <!-- معرفی فایل manifest به مرورگر -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- تعیین رنگ نوار بالای مرورگر در موبایل -->
+    <meta name="theme-color" content="#007bff">
     <!-- Google Fonts for Persian typography presets -->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
@@ -1033,5 +1037,14 @@
             updateActiveTaskBanner();
         };
     </script>
-
+    <!-- ثبت و فعال‌سازی Service Worker -->
+    <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+            .then((reg) => console.log('برنامه با موفقیت فعال شد!', reg))
+            .catch((err) => console.log('خطا در فعال‌سازی:', err));
+        });
+    }
+</script>
 </body></html>
